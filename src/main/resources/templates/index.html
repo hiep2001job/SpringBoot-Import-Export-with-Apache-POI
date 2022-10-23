@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="card mt-10 mx-5 col-md-6">
+				<div class="card-header">Xuất file excel theo ấp (Xã Hưng Phú)</div>
+				<div class="card-body">
+					<form th:action="@{/student/export}">
+						<div class="form-row align-items-center">
+							<div class="col-auto my-1">
+								<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+								<select class="custom-select mr-sm-2"
+									id="inlineFormCustomSelect" name="address">
+									<option selected>Chọn ấp</option>
+									<option
+										th:each="address : ${T(com.student.common.HamletEnum).values()}"
+										th:value="${address.toString()}">[[${address.toString()}]]</option>
+								</select>
+							</div>
+
+							<div class="col-auto my-1">
+								<button type="submit" class="btn btn-primary">Export
+									Excel</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
